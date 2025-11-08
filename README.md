@@ -44,6 +44,7 @@ Return: nothing, but will show if data frame has zero/NA value
 Usage Example: 
 
 `df<-read.csv(file="xxx.csv",header=TRUE,stringsAsFactors = TRUE)`
+
 `check_na_zero(df)`
 
 ### Function 2. replace_na_with_zero(df,ignore_cols)
@@ -63,6 +64,7 @@ Return:1). df: return data frame with variables' outliers treated
 Usage Example:
 
 `variables<-c("col1","col2")`
+
 `df<-IQR_outlier(df,variables)`
 
 ### Function 4. kNN Imputation
@@ -70,10 +72,15 @@ Purpose: Replace NA value with kNN Imputation (work on data set if their feature
 Usage Example: 
 
 `target_feature<-df$INCOME_LEVEL`
+
 `df_distance<-initialize_distance_find_best_k(df)`
+
 `not_na_index<-initialize_not_na_index(target_feature)`
+
 `test_k_index<-initialize_test_k_index(888,0.1,not_na_index)`
+
 `smallest_k<-find_best_k(20,test_k_index,df_distance,not_na_index,target_feature)`
+
 `df$INCOME_LEVEL<-kNN_Imputation(df,smallest_k,target_feature,df_distance)`
 
        * Function 4.1 initialize_distance_find_best_k(df)
@@ -123,4 +130,28 @@ Usage Example:
               Usage Example:
 
                      `df$feature<-kNN_Imputation(df,smallest_k,target_feature,df_distance)`
+
+### Function 5. check_mutilineariality(variables_df)
+Purpose: Check multilineariality that will introduce bia to logistic regression model
+Input: 1). variables_df: variables selected for multilineariality checking (has to be numerical)
+Return:Nothing will return but will tell you what features are highly correlated
+Usage Example:
+
+`variables<-df_LR[,c("col1","col2")]`
+
+`check_mutilineariality(variables)`
+
+### Function 6. three_set_partition(df,seed_num, target_col, train_portion, test_portion)
+Purpose: Randomly split data into designated training portion, test portion and the rest is validation portion with stratified split method which avoid class imbalance
+Input: 1). df: data frame that used for partition
+       2). seed_num: desired seeding number
+       3). target_col: specific column that you don't want to fall in class
+           imbalance (usually column used for prediction)
+       4). train_portion: portion of data select for training
+       5). test_portion: portion of data select for testing 
+           (rest for validation)
+Return:1). A list contain Training Index, Test Index & Validation Index
+Usage Example:
+
+`partition_result<-three_set_partition(df_encoded_LR,888,"DONATED",0.5,0.25)`
 
