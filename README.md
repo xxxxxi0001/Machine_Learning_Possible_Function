@@ -8,11 +8,11 @@ This include how to use these function
 2. replace_na_with_zero
 3. IQR_outlier
 4. kNN Imputation
-     initialize_distance_find_best_k
+     {initialize_distance_find_best_k
      initialize_not_na_index
      initialize_test_k_index
      find_best_k
-     kNN_Imputation
+     kNN_Imputation}
 5. check_mutilineariality
 6. three_set_partition
 7. ensemble_train_partition
