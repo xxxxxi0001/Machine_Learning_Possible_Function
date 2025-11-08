@@ -1,0 +1,50 @@
+# Input: 1). df: data frame that used for partition
+#        2). seed_num: desired seeding number
+#        3). target_col: specific column that you don't want to fall in class imbalance (usually column used for prediction)
+# Return:1). A list contain Training Index, Test Index & Validation Index
+three_set_partition<-function(df,seed_num,target_col){
+  
+  # Set seed for repeat
+  set.seed(seed_num)
+
+  # Get donated/not donated index
+  donated_index<-which(df[[target_col]]==1)
+  not_donated_index<-which(df[[target_col]]==0)
+
+  # initialization for partition
+  n_donated<-length(donated_index)
+  n_n_donated<-length(not_donated_index)
+
+  # Randomly selected 50% samples' index
+  donated_train<-sample(donated_index,size=floor(0.5*n_donated))
+  n_donated_train<-sample(not_donated_index,size=floor(0.5*n_n_donated))
+  train_index_encoded<-c(donated_train,n_donated_train)
+  # shuffle
+  train_index_encoded<-sample(train_index_encoded)
+
+  # Get rest index
+  rest_dona_i<-setdiff(donated_index,donated_train)
+  rest_n_dona_i<-setdiff(not_donated_index,n_donated_train)
+  
+  # For rest
+  nr_dona<-length(rest_dona_i)
+  nr_n_dona<-length(rest_n_dona_i)
+
+  # choose 50% for testing
+  donated_test<-sample(rest_dona_i,size=floor(0.5*nr_dona))
+  n_donated_test<-sample(rest_n_dona_i,size=floor(0.5*nr_n_dona))
+  test_index_encoded<-c(donated_test,n_donated_test)
+  test_index_encoded<-sample(test_index_encoded)
+
+  # rest is validation
+  donated_val<-setdiff(rest_dona_i,donated_test)
+  n_donated_val<-setdiff(rest_n_dona_i,n_donated_test)
+  validation_index_encoded<-c(donated_val,n_donated_val)
+  validation_index_encoded<-sample(validation_index_encoded)
+  
+  return(list(
+    train_index=train_index_encoded,
+    test_index=test_index_encoded,
+    validation_index=validation_index_encoded
+  ))
+}
