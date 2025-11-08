@@ -8,20 +8,20 @@ This include how to use these function
 2. replace_na_with_zero
 3. IQR_outlier
 4. kNN Imputation
-5.   initialize_distance_find_best_k
-6.   initialize_not_na_index
-7.   initialize_test_k_index
-8.   find_best_k
-9.   kNN_Imputation
-10. check_mutilineariality
-11. three_set_partition
-12. ensemble_train_partition
-13. check_class_imbalance
-14. backward_p
-15. make_ensemble_predict
-16. check_model_performance
-17. find_best_threshold
-18. ensemble_weight
+     initialize_distance_find_best_k
+     initialize_not_na_index
+     initialize_test_k_index
+     find_best_k
+     kNN_Imputation
+5. check_mutilineariality
+6. three_set_partition
+7. ensemble_train_partition
+8. check_class_imbalance
+9. backward_p
+10. make_ensemble_predict
+11. check_model_performance
+12. find_best_threshold
+13. ensemble_weight
 
 ## Technologies Used
 - **R** 
