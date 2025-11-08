@@ -7,7 +7,7 @@
 #        5). positive_weight: if class imbalance within data set, add weight based on portion
 #        6). negative_weight: if class imbalance within data set, add weight based on portion 
 # Return:1). A list of trained emseble Logistic Model Based on List of Index you provide
-backward_p<-function (df,train_index,target_col,positive,positive_weight,negative_weight) {
+backward_p_lr<-function (df,train_index,target_col,positive,positive_weight,negative_weight) {
     if (is.list(train_index)) {
           logistic_model<-list()
           for (i in 1:length(train_index)) {
