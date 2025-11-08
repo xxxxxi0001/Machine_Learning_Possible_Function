@@ -7,10 +7,11 @@
 #        7). positive: target positive value
 #        8). negative: target negative value
 # Return:1). Each Ensemble Model's Weight
-ensemble_weight<-function(num_ensemble,logistic_model_list,df,test_index,best_threshold,target_col,positive,negative) {
+ensemble_weight<-function(num_ensemble, logistic_model_list, df,test_index, best_threshold, target_col, positive, negative) {
   
   # Initialize a list to store F1 value
   F1_list<-list()
+  prediction_list<-list()
   
   # Loop over all ensemble model
   for (i in 1:num_ensemble) {
