@@ -1,20 +1,19 @@
-# Input: 1). num_ensemble: the number of ensemble you create
-#        2). logistic_model_list: the logistic regression model you create with your ensemble list
-#        3). df: the data frame you use to make prediction
-#        4). test_index: the index of 25% testing
-#        5). best_threshold: the best threshold you get after run function "find_best_threshold"
-#        6). target_col: the target column that need to make prediction
-#        7). positive: target positive value
-#        8). negative: target negative value
+# Input: 1). logistic_model_list: the logistic regression model you create with your ensemble list
+#        2). df: the data frame you use to make prediction
+#        3). test_index: the index of 25% testing
+#        4). best_threshold: the best threshold you get after run function "find_best_threshold"
+#        5). target_col: the target column that need to make prediction
+#        6). positive: target positive value
+#        7). negative: target negative value
 # Return:1). Each Ensemble Model's Weight
-ensemble_weight<-function(num_ensemble, logistic_model_list, df,test_index, best_threshold, target_col, positive, negative) {
+ensemble_weight<-function(logistic_model_list, df,test_index, best_threshold, target_col, positive, negative) {
   
   # Initialize a list to store F1 value
   F1_list<-list()
   prediction_list<-list()
   
   # Loop over all ensemble model
-  for (i in 1:num_ensemble) {
+  for (i in 1:length(logistic_model_list)) {
     
     # Make prediction with each model using test data set
     prediction_list[[i]]<-predict(logistic_model_list[[i]], df[test_index,], type="response")
