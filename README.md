@@ -155,3 +155,97 @@ Usage Example:
 
 `partition_result<-three_set_partition(df_encoded_LR,888,"DONATED",0.5,0.25)`
 
+### Function 7. ensemble_train_partition(df,seed_num,train_index,sub_num,sub_portion)
+Purpose: From training index, randomly selected designated number of ensemble data set with designated portion
+Input: 1). df: data frame that used for training partition
+       2). seed_num: desired seeding number
+       3). train_index: the overall training index that you gonna selected from
+       4). sub_num: number of ensemble list
+       5). sub_portion: portion of overall training you want to select as sub-list
+Return:1). A list contain sub_num number of training index
+Usage Example:
+
+`train_partitions_index<-ensemble_train_partition(df_encoded_LR,888,train_index_encoded,10,0.6)`
+
+### Function 8. check_class_imbalance(df,index_list,target_col,positive,negative)
+Purpose: Check if there is class imbalance happened in partitioned dataset (can handle list & numeric)
+Input: 1). df: the data frame those index fall into
+       2). index_list: the list of index you want to check if fall into class imbalance
+       3). target_col: the column that used to check class imbalance 
+       4). positive: positive value of target_col
+       5). negative: negative value of target_col
+Return: No Return, but will output result
+Usage Example:
+
+`check_class_imbalance(df_encoded_LR,train_partitions_index,"col_name",1,0)`
+
+### Function 9. backward_p(df,num_ensemble,train_index_list,target_col,positive,positive_weight,negative_weight)
+Purpose: Use ensemble data set train logistic regression model with backward p, that only keep important feature in model
+Input: 1). df: the data frame those index fall into
+       2). num_ensemble: number of ensemble data set that used to train
+       3). train_index_list: the list of index for ensemble train 
+       4). target_col: the target column that need to be predicted
+       5). positive: positive value of target_col
+       6). positive_weight: if class imbalance within data set, add weight based on portion
+       7). negative_weight: if class imbalance within data set, add weight based on portion 
+Return:1). A list of trained emseble Logistic Model Based on List of Index you provide
+Usage Example:
+
+`positive_weight<-(positive_portion)/(negative_portion)`
+
+`logistic_model_list<-backward_p(df_encoded_LR,10,train_partitions_index,"col_name",1,positive_weight,1)`
+
+### Function 10. make_ensemble_predict(num_ensemble,logistic_model_list,df,test_index)
+Purpose: Use ensembled logistic regression model make prediction
+Input: 1). num_ensemble: number of ensemble you create
+       2). logistic_model_list: list of logistic regression model
+       3). df:  the data frame those index fall into
+       4). test_index: the list of index for ensemble train
+Return:1). Mean Prediction made by num_ensemble's logistic model
+Usage Example:
+
+`ensemble_predictions<-make_ensemble_predict(10,logistic_model_list,df_encoded_LR,test_index_encoded)`
+
+### Function 11. check_model_performance(predict_prob, threshold, positive, negative, df, test_index, target_col)
+Purpose: Calculate and output accuracy, tpr, tnr, F1 value to monitor model's performance
+Input: 1). predict_prob: the prediction result (in probability/response)
+       2). threshold: above what number is positive
+       3). positive: target's positive value 
+       4). negative: target's negative value
+       5). df: the data frame you use to make prediction
+       6). test_index: the index you select for test
+       7). target_col: your target name 
+Return:No return but will automatically give you how accurate your model is with accuracy, tpr, tnr, F1 value
+Usage Example:
+
+`check_model_performance(ensemble_predictions,0.5,1,0,df_encoded_LR,test_index_encoded,"col_name")`
+
+### Function 12. find_best_threshold(predict_prob, df,test_index, target_col, positive, negative)
+Purpose: Find the best threshold for this model to make a prediction with F1 value
+Reminder: target must be numerical value
+Input: 1). predict_prob: the prediction result (in probability/response)
+       2). df: the data frame you use to make prediction
+       3). test_index: the index you select for test
+       4). target_col: your target name
+       5). positive: target positive value
+       6). negative: target negative value
+Return:1). best F1 value
+Usage Example:
+
+`best_threshold<-find_best_threshold(ensemble_predictions,df_encoded_LR,test_index_encoded,"col_name",1,0)`
+
+### Function 13. ensemble_weight(num_ensemble, logistic_model_list, df,test_index, best_threshold, target_col, positive, negative)
+Purpose: Calculate each ensemble's weight for later tuning
+Input: 1). num_ensemble: the number of ensemble you create
+       2). logistic_model_list: the logistic regression model you create with your ensemble list
+       3). df: the data frame you use to make prediction
+       4). test_index: the index of 25% testing
+       5). best_threshold: the best threshold you get after run function "find_best_threshold"
+       6). target_col: the target column that need to make prediction
+       7). positive: target positive value
+       8). negative: target negative value
+Return:1). Each Ensemble Model's Weight
+Usage Example:
+
+`weight_list<-ensemble_weight(10,logistic_model_list,df_encoded_LR,test_index_encoded,best_threshold,"col_name",1,0)`
+
