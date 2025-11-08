@@ -180,14 +180,15 @@ None
 
 `check_class_imbalance(df_encoded_LR,train_partitions_index,"col_name",1,0)`
 
-### Function 9. backward_p(df,num_ensemble,train_index_list,target_col,positive,positive_weight,negative_weight)
+### Function 9. backward_p(df,train_index,target_col,positive,positive_weight,negative_weight)
 1. Purpose: Use ensemble data set train logistic regression model with backward p, that only keep important feature in model
-2. Input: 1). df: the data frame those index fall into
-          2). train_index_list: the list of index for ensemble train 
-          3). target_col: the target column that need to be predicted
-          4). positive: positive value of target_col
-          5). positive_weight: if class imbalance within data set, add weight based on portion
-          6). negative_weight: if class imbalance within data set, add weight based on portion 
+Input: 1). df: the data frame those index fall into
+       2). train_index: the index for ensemble/not ensemble train 
+       3). target_col: the target column that need to be predicted
+       4). positive: positive value of target_col
+       5). positive_weight: if class imbalance within data set, add weight based on portion
+       6). negative_weight: if class imbalance within data set, add weight based on portion 
+Return:1). A list of trained emseble Logistic Model Based on List of Index you provide
 3. Return:1). A list of trained emseble Logistic Model Based on List of Index you provide
 4. Usage Example:
 
