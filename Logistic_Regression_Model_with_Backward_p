@@ -1,11 +1,11 @@
 ### Backward p-value for Logistic Regression Model (func)
 ```{r}
 # Input: 1). df: the data frame those index fall into
-#        3). train_index: the index for ensemble/not ensemble train 
-#        4). target_col: the target column that need to be predicted
-#        5). positive: positive value of target_col
-#        6). positive_weight: if class imbalance within data set, add weight based on portion
-#        7). negative_weight: if class imbalance within data set, add weight based on portion 
+#        2). train_index: the index for ensemble/not ensemble train 
+#        3). target_col: the target column that need to be predicted
+#        4). positive: positive value of target_col
+#        5). positive_weight: if class imbalance within data set, add weight based on portion
+#        6). negative_weight: if class imbalance within data set, add weight based on portion 
 # Return:1). A list of trained emseble Logistic Model Based on List of Index you provide
 backward_p<-function (df,train_index,target_col,positive,positive_weight,negative_weight) {
     if (is.list(train_index)) {
@@ -42,6 +42,11 @@ backward_p<-function (df,train_index,target_col,positive,positive_weight,negativ
       
               # if all p are good, end loop 
               if (max(p_values)<0.05) break
+              
+              if (all(is.na(p_values))) {
+                cat("All p-values are NA, this model is not working")
+                break
+              }
             }
           }
         }
@@ -75,6 +80,10 @@ backward_p<-function (df,train_index,target_col,positive,positive_weight,negativ
       
             # if all p are good, end loop 
             if (max(p_values)<0.05) break
+            if (all(is.na(p_values))) {
+                cat("All p-values are NA, this model is not working")
+                break
+            }
           }
         }
       }
