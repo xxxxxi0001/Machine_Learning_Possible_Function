@@ -65,4 +65,28 @@ Usage Example:
 `variables<-c("col1","col2")`
 `df<-IQR_outlier(df,variables)`
 
-### Function 4. 
+### Function 4. kNN Imputation
+Purpose: Replace NA value with kNN Imputation (work on data set if their features could relate to each other)
+
+       * Function 4.1 initialize_distance_find_best_k(df)
+              Purpose: Get Euclidean Data Frame from features that does not have NA value for later imputation
+              Input: 1). df: data frame that need to be treated
+              Return:1). df_distance: the euclidean distance list that will be used
+              Usage Example:
+
+                     `df_distance<-initialize_distance_find_best_k(df)`
+                     
+       * Function 4.2 initialize_not_na_index(target_feature)
+              Purpose: Get target features index that are not NA for find best k
+              Input: 1). target_feature: specific feature that need to find not na value
+              Return:1). not_na_index: target_feature's all index that are not na
+              Usage Example
+
+                     `not_na_index<-initialize_not_na_index(target_feature)`
+
+       * Function 4.1 initialize_test_k_index(seed_num,test_proportion,not_na_index)
+
+       * Function 4.1 initialize_distance_find_best_k(df)
+
+       * Function 4.1 initialize_distance_find_best_k(df)
+
