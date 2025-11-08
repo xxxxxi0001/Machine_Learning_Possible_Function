@@ -1,3 +1,4 @@
+```{r}
 # Input: 1). logistic_model_list: the logistic regression model you create with your ensemble list
 #        2). df: the data frame you use to make prediction
 #        3). test_index: the index of 25% testing
@@ -35,3 +36,4 @@ ensemble_weight<-function(logistic_model_list, df,test_index, best_threshold, ta
   weight_list<-as.list(F1_weights)
   return(weight_list)
 }
+```
