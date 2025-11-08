@@ -183,18 +183,25 @@ None
 ### Function 9. backward_p(df,num_ensemble,train_index_list,target_col,positive,positive_weight,negative_weight)
 1. Purpose: Use ensemble data set train logistic regression model with backward p, that only keep important feature in model
 2. Input: 1). df: the data frame those index fall into
-          2). num_ensemble: number of ensemble data set that used to train
-          3). train_index_list: the list of index for ensemble train 
-          4). target_col: the target column that need to be predicted
-          5). positive: positive value of target_col
-          6). positive_weight: if class imbalance within data set, add weight based on portion
-          7). negative_weight: if class imbalance within data set, add weight based on portion 
+          2). train_index_list: the list of index for ensemble train 
+          3). target_col: the target column that need to be predicted
+          4). positive: positive value of target_col
+          5). positive_weight: if class imbalance within data set, add weight based on portion
+          6). negative_weight: if class imbalance within data set, add weight based on portion 
 3. Return:1). A list of trained emseble Logistic Model Based on List of Index you provide
 4. Usage Example:
+
+* For List of Models:
 
 `positive_weight<-(positive_portion)/(negative_portion)`
 
 `logistic_model_list<-backward_p(df_encoded_LR,10,train_partitions_index,"col_name",1,positive_weight,1)`
+
+* For Specific Model:
+
+`one_set<-unlist(train_partitions_index[[1]])`
+
+`logistic_model<-backward_p(df_encoded_LR,one_set,"DONATED",1,positive_weight,1)`
 
 ### Function 10. make_ensemble_predict(num_ensemble,logistic_model_list,df,test_index)
 1. Purpose: Use ensembled logistic regression model make prediction
