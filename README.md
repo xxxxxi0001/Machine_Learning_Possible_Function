@@ -4,20 +4,20 @@
 This include how to use these function
 
 ## Key Functions
-1. check_na_zero
-2. replace_na_with_zero
-3. IQR_outlier
-4. kNN Imputation
-     {initialize_distance_find_best_k | 
-     initialize_not_na_index | 
-     initialize_test_k_index | 
-     find_best_k | 
-     kNN_Imputation}
-5. check_mutilineariality
-6. three_set_partition
-7. ensemble_train_partition
-8. check_class_imbalance
-9. backward_p
+1.  check_na_zero
+2.  replace_na_with_zero
+3.  IQR_outlier
+4.  kNN Imputation
+      {initialize_distance_find_best_k | 
+      initialize_not_na_index | 
+      initialize_test_k_index | 
+      find_best_k | 
+      kNN_Imputation}
+5.  check_mutilineariality
+6.  three_set_partition
+7.  ensemble_train_partition
+8.  check_class_imbalance
+9.  backward_p
 10. make_ensemble_predict
 11. check_model_performance
 12. find_best_threshold
@@ -182,13 +182,12 @@ None
 
 ### Function 9. backward_p(df,train_index,target_col,positive,positive_weight,negative_weight)
 1. Purpose: Use ensemble data set train logistic regression model with backward p, that only keep important feature in model
-Input: 1). df: the data frame those index fall into
-       2). train_index: the index for ensemble/not ensemble train 
-       3). target_col: the target column that need to be predicted
-       4). positive: positive value of target_col
-       5). positive_weight: if class imbalance within data set, add weight based on portion
-       6). negative_weight: if class imbalance within data set, add weight based on portion 
-Return:1). A list of trained emseble Logistic Model Based on List of Index you provide
+2. Input: 1). df: the data frame those index fall into
+          2). train_index: the index for ensemble/not ensemble train 
+          3). target_col: the target column that need to be predicted
+          4). positive: positive value of target_col
+          5). positive_weight: if class imbalance within data set, add weight based on portion
+          6). negative_weight: if class imbalance within data set, add weight based on portion 
 3. Return:1). A list of trained emseble Logistic Model Based on List of Index you provide
 4. Usage Example:
 
@@ -206,11 +205,10 @@ Return:1). A list of trained emseble Logistic Model Based on List of Index you p
 
 ### Function 10. make_ensemble_predict(num_ensemble,logistic_model_list,df,test_index)
 1. Purpose: Use ensembled logistic regression model make prediction
-2. Input: 1). num_ensemble: number of ensemble you create
-          2). logistic_model_list: list of logistic regression model
-          3). df:  the data frame those index fall into
-          4). test_index: the list of index for ensemble train
-3. Return:1). Mean Prediction made by num_ensemble's logistic model
+2. Input: 1). logistic_model_list: list of logistic regression model
+          2). df:  the data frame those index fall into
+          3). test_index: the list of index for ensemble train
+3. Return:1). Mean Prediction made by number of ensemble's logistic model
 4. Usage Example:
 
 `ensemble_predictions<-make_ensemble_predict(10,logistic_model_list,df_encoded_LR,test_index_encoded)`
