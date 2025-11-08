@@ -71,7 +71,7 @@ Usage Example:
 Purpose: Replace NA value with kNN Imputation (work on data set if their features could relate to each other)
 Usage Example: 
 
-`target_feature<-df$INCOME_LEVEL`
+`target_feature<-df$col_name`
 
 `df_distance<-initialize_distance_find_best_k(df)`
 
@@ -81,7 +81,7 @@ Usage Example:
 
 `smallest_k<-find_best_k(20,test_k_index,df_distance,not_na_index,target_feature)`
 
-`df$INCOME_LEVEL<-kNN_Imputation(df,smallest_k,target_feature,df_distance)`
+`df$col_name<-kNN_Imputation(df,smallest_k,target_feature,df_distance)`
 
        * Function 4.1 initialize_distance_find_best_k(df)
               Purpose: Get Euclidean Data Frame from features that does not have NA value for later imputation
