@@ -10,7 +10,9 @@ check_mutilineariality<-function(variables_df, threshold=0.8) {
   # Remove Duplicated Rows
   remove_rows<-c()
   
-  # Loop over all row 1 and row 2 (variable name), if they are the same, collect in remove rows
+  # Loop over all row 1 and row 2 (variable name), 
+  # row 1 variable is equal to row 2 variable & row 2 variable is also equal 
+  # to row 1 variable & this happen the first time, collect in remove rows
   for (i in 1:nrow(cor_df)) {
     for (j in 1:nrow(cor_df)) {
       if (as.character(cor_df[i,1])==as.character(cor_df[j,2]) && as.character(cor_df[i,2]) == as.character(cor_df[j,1]) && i<j) {
