@@ -139,7 +139,7 @@ None
 
                      `df$feature<-kNN_Imputation(df,smallest_k,target_feature,df_distance)`
 
-### Function 5. check_mutilineariality(variables_df)
+### Function 5. check_mutilineariality(variables_df,threshold=0.8)
 1. Purpose: Check multilineariality that will introduce bia to logistic regression model
 2. Input: 1). variables_df: variables selected for multilineariality checking (has to be numerical)
 3. Return:Nothing will return but will tell you what features are highly correlated
