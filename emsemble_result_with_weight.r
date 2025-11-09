@@ -5,12 +5,16 @@
 # Return:1). ensemble_predictions: list of prediction (in probability) made 
 #            with ensemble Logistic Regression model
 emsemble_result_with_weight<-function(model_list,df,index,weight_list) {
-   prediction_val<-list()
-
+  
+  # Initialization
+  prediction_val<-list()
+  # Make prediction with each model and have them contribute differently based on weight
   for (i in 1:length(model_list)) {
     prediction_val[[i]]<-predict(model_list[[i]], df[index,], type="response")
     prediction_val[[i]]<-prediction_val[[i]]*weight_list[[i]]
   }
+  
+  # Calculate ensemble model's mean as final prediciton value
   ensemble_predictions<-Reduce("+",prediction_val)
   return(ensemble_predictions)
 }
