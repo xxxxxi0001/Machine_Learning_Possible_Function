@@ -14,7 +14,7 @@ reverse_num<-function(x,treatment) {
 #        4). target_col: that column that you want to make prediction for
 #        5). target_treatment: if target column has been transformed, what method it use
 # Return:1). weight_list: how each model should contribute to overall prediction
-ensemble_weight_RMSE<-function(model_list,df,test_index,target_col,target_treatment) {
+ensemble_weight_RMSE<-function(model_list,df,test_index,target_col,target_treatment="None") {
   
   # Initialization
   prediction<-list()
