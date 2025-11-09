@@ -1,3 +1,4 @@
+```{r}
 # Input: 1). df: data frame that used for partition
 #        2). seed_num: desired seeding number
 #        3). target_col: specific column that you don't want to fall in class
@@ -5,15 +6,17 @@
 #        4). train_portion: portion of data select for training
 #        5). test_portion: portion of data select for testing 
 #            (rest for validation)
+#        6). positive: target column's positive value
+#        7). negative: target column's negative value
 # Return:1). A list contain Training Index, Test Index & Validation Index
-three_set_partition<-function(df,seed_num, target_col, train_portion, test_portion){
+three_set_partition<-function(df,seed_num, target_col, train_portion, test_portion,positive,negative){
   
   # Set seed for repeat
   set.seed(seed_num)
 
   # Get donated/not donated index
-  donated_index<-which(df[[target_col]]==1)
-  not_donated_index<-which(df[[target_col]]==0)
+  donated_index<-which(df[[target_col]]==positive)
+  not_donated_index<-which(df[[target_col]]==negative)
 
   # initialization for partition
   n_donated<-length(donated_index)
@@ -47,9 +50,12 @@ three_set_partition<-function(df,seed_num, target_col, train_portion, test_porti
   validation_index_encoded<-c(donated_val,n_donated_val)
   validation_index_encoded<-sample(validation_index_encoded)
   
+  # Return train, test, validation index as a list
   return(list(
     train_index=train_index_encoded,
     test_index=test_index_encoded,
     validation_index=validation_index_encoded
   ))
 }
+
+```
