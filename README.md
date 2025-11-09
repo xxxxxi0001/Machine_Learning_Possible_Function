@@ -23,8 +23,11 @@ This include how to use these function
 12. make_ensemble_predict
 13. check_model_performance
 14. find_best_threshold
-15. ensemble_weight
-16. emsemble_result_with_weight
+15. ensemble_weight_F1
+16. ensemble_weight_RMSE
+          {reverse_num | 
+          ensemble_weight_RMSE}          
+17. emsemble_result_with_weight
 
 ## Technologies Used
 - **R** 
@@ -281,6 +284,26 @@ None
 4. Usage Example:
 
 `weight_list<-ensemble_weight_F1(logistic_model_list,df_encoded_LR,test_index_encoded,best_threshold,"col_name",1,0)`
+
+### Function 16. ensemble_weight_RMSE
+1. Purpose: Use RMSE to define how each ensemble model should be weight
+      * Function 16.1 reverse_num(x,treatment)
+              Input: 1). x: the variable that's been or not been transformed
+                     2). treatment: could be "log","sqrt","square","none"
+              Return:1). Transform back original value
+              Usage Example:
+
+                    `real_value<-reverse_num(real_value,target_treatment)`
+      * Function 16.2  ensemble_weight_RMSE(model_list,df,test_index,target_col,target_treatment)
+              Input: 1). model_list: the list of ensemble model
+                     2). df: data frame that you use to make prediction
+                     3). test_index: the test index selected earlier
+                     4). target_col: that column that you want to make prediction for
+                     5). target_treatment: if target column has been transformed, what method it use
+              Return:1). weight_list: how each model should contribute to overall prediction
+              Usage Example:
+
+              `weight_list<-ensemble_weight_RMSE(mlr_list,df_encoded,test_index,"col_name","log")`
 
 ### Function 16. emsemble_result_with_weight(logistic_model_list,df,index,weight_list)
 1. Purpose: Try Emsembled Logistic Regression Model with different index (could be test & validation data set)
