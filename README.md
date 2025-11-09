@@ -205,9 +205,9 @@ None
 
 `logistic_model<-backward_p(df_encoded_LR,one_set,"col_name",1,positive_weight,1)`
 
-### Function 10. make_ensemble_predict(logistic_model_list,df,test_index)
+### Function 10. make_ensemble_predict(model_list,df,test_index)
 1. Purpose: Use ensembled logistic regression model make prediction
-2. Input: 1). logistic_model_list: list of logistic regression model
+2. Input: 1). model_list: list of logistic regression model
           2). df:  the data frame those index fall into
           3). test_index: the list of index for ensemble train
 3. Return:1). Mean Prediction made by number of ensemble's logistic model
