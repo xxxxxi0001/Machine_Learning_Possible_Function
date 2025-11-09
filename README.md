@@ -142,7 +142,7 @@ None
 
 `check_mutilineariality(variables)`
 
-### Function 6. three_set_partition(df,seed_num, target_col, train_portion, test_portion)
+### Function 6. three_set_partition(df,seed_num, target_col, train_portion, test_portion,positive,negative)
 1. Purpose: Randomly split data into designated training portion, test portion and the rest is validation portion with stratified split method which avoid class imbalance
 2. Input: 1). df: data frame that used for partition
           2). seed_num: desired seeding number
@@ -151,8 +151,10 @@ None
           4). train_portion: portion of data select for training
           5). test_portion: portion of data select for testing 
               (rest for validation)
-3. Return:1). A list contain Training Index, Test Index & Validation Index
-4. Usage Example:
+          6). positive: target column's positive value
+          7). negative: target column's negative value
+4. Return:1). A list contain Training Index, Test Index & Validation Index
+5. Usage Example:
 
 `partition_result<-three_set_partition(df_encoded_LR,888,"DONATED",0.5,0.25)`
 
