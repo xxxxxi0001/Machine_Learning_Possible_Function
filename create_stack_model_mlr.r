@@ -6,7 +6,7 @@
 #            automatically gives how each model should contribute to the overall prediction
 create_stack_model_mlr<-function (df,target_col,test_index,model_list) {
   
-  # Create an empty stack_df with length of test_index
+  # Create stack_df with length of test_index
   stack_df<-data.frame(true_value=df[[target_col]][test_index])
   
   # For every model, make prediction with data set of test_index
