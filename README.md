@@ -24,7 +24,7 @@ This include how to use these function
 13. check_model_performance
 14. find_best_threshold
 15. ensemble_weight
-16. get_emsemble_result
+16. emsemble_result_with_weight
 
 ## Technologies Used
 - **R** 
@@ -282,7 +282,7 @@ None
 
 `weight_list<-ensemble_weight_F1(logistic_model_list,df_encoded_LR,test_index_encoded,best_threshold,"col_name",1,0)`
 
-### Function 16. get_emsemble_result(logistic_model_list,df,index,weight_list)
+### Function 16. emsemble_result_with_weight(logistic_model_list,df,index,weight_list)
 1. Purpose: Try Emsembled Logistic Regression Model with different index (could be test & validation data set)
 2. Input: 1). logistic_model_list: the logistic regression model you create with your ensemble list
           2). df: the data frame you use to make prediction
@@ -291,5 +291,5 @@ None
 3. Return:1). ensemble_predictions: list of prediction (in probability) made with ensemble Logistic Regression model
 4. Usage Example:
 
-`get_emsemble_result(logistic_model_list,df_encoded_LR,validation_index_encoded,weight_list)`
+`emsemble_result_with_weight(logistic_model_list,df_encoded_LR,validation_index_encoded,weight_list)`
 
