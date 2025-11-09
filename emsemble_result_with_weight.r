@@ -36,6 +36,8 @@ emsemble_result_with_weight<-function(model_list,df,index,weight_list,target_tre
   }
   
   # Calculate ensemble model's mean as final prediciton value
+  # If no transformation occur, return original value
+  # If transformation occured, return value that reversed back
   if (tolower(target_treatment)=="none") {
     ensemble_predictions<-Reduce("+",prediction_val)
   }
