@@ -13,7 +13,7 @@ This include how to use these function
       initialize_test_k_index | 
       find_best_k | 
       kNN_Imputation}
-5.  check_mutilineariality
+5.  check_multicollinearity
 6.  three_set_partition
 7.  three_set_partition_no_target
 8.  ensemble_train_partition
@@ -139,8 +139,8 @@ None
 
                      `df$feature<-kNN_Imputation(df,smallest_k,target_feature,df_distance)`
 
-### Function 5. check_mutilineariality(variables_df,threshold=0.8)
-1. Purpose: Check multilineariality that will introduce bia to logistic regression model
+### Function 5. check_multicollinearity(variables_df,threshold=0.8)
+1. Purpose: Check multicollinearity that will introduce bia to logistic regression model
 2. Input: 1). variables_df: variables selected for multilineariality checking (has to be numerical)
           2). threshold: above what correlational value is considered as strong correlation
 4. Return:Nothing will return but will tell you what features are highly correlated
@@ -148,7 +148,7 @@ None
 
 `variables<-df_LR[,c("col1","col2")]`
 
-`check_mutilineariality(variables)`
+`check_multicollinearity(variables)`
 
 ### Function 6. three_set_partition(df,seed_num, target_col, train_portion, test_portion,positive,negative)
 1. Purpose: Randomly split data into designated training portion, test portion and the rest is validation portion with stratified split method which avoid class imbalance
