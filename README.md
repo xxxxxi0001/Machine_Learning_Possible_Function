@@ -28,6 +28,8 @@ This include how to use these function
           {reverse_num | 
           ensemble_weight_RMSE}          
 17. emsemble_result_with_weight
+18. create_stack_model_mlr
+19. stack_test_mlr
 
 ## Technologies Used
 - **R** 
