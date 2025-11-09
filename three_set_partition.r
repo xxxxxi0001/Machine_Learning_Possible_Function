@@ -42,12 +42,14 @@ three_set_partition<-function(df,seed_num, target_col, train_portion, test_porti
   donated_test<-sample(rest_dona_i,size=floor(test_num*nr_dona))
   n_donated_test<-sample(rest_n_dona_i,size=floor(test_num*nr_n_dona))
   test_index_encoded<-c(donated_test,n_donated_test)
+  # shuffle
   test_index_encoded<-sample(test_index_encoded)
 
   # rest is validation
   donated_val<-setdiff(rest_dona_i,donated_test)
   n_donated_val<-setdiff(rest_n_dona_i,n_donated_test)
   validation_index_encoded<-c(donated_val,n_donated_val)
+  # shuffle
   validation_index_encoded<-sample(validation_index_encoded)
   
   # Return train, test, validation index as a list
