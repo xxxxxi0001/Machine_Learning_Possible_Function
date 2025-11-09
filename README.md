@@ -268,7 +268,7 @@ None
 
 `best_threshold<-find_best_threshold(ensemble_predictions,df_encoded_LR,test_index_encoded,"col_name",1,0)`
 
-### Function 15. ensemble_weight(logistic_model_list, df,test_index, best_threshold, target_col, positive, negative)
+### Function 15. ensemble_weight_F1(logistic_model_list, df,test_index, best_threshold, target_col, positive, negative)
 1. Purpose: Calculate each ensemble's weight for later tuning
 2. Input: 1). logistic_model_list: the logistic regression model you create with your ensemble list
           2). df: the data frame you use to make prediction
@@ -280,7 +280,7 @@ None
 3. Return:1). Each Ensemble Model's Weight
 4. Usage Example:
 
-`weight_list<-ensemble_weight(logistic_model_list,df_encoded_LR,test_index_encoded,best_threshold,"col_name",1,0)`
+`weight_list<-ensemble_weight_F1(logistic_model_list,df_encoded_LR,test_index_encoded,best_threshold,"col_name",1,0)`
 
 ### Function 16. get_emsemble_result(logistic_model_list,df,index,weight_list)
 1. Purpose: Try Emsembled Logistic Regression Model with different index (could be test & validation data set)
