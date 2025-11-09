@@ -15,14 +15,16 @@ This include how to use these function
       kNN_Imputation}
 5.  check_mutilineariality
 6.  three_set_partition
-7.  ensemble_train_partition
-8.  check_class_imbalance
-9.  backward_p
-10. make_ensemble_predict
-11. check_model_performance
-12. find_best_threshold
-13. ensemble_weight
-14. get_emsemble_result
+7.  three_set_partition_no_target
+8.  ensemble_train_partition
+9.  check_class_imbalance
+10. backward_p_lr
+11. backward_p_mlr
+12. make_ensemble_predict
+13. check_model_performance
+14. find_best_threshold
+15. ensemble_weight
+16. get_emsemble_result
 
 ## Technologies Used
 - **R** 
@@ -153,12 +155,24 @@ None
               (rest for validation)
           6). positive: target column's positive value
           7). negative: target column's negative value
-4. Return:1). A list contain Training Index, Test Index & Validation Index
-5. Usage Example:
+3. Return:1). A list contain Training Index, Test Index & Validation Index
+4. Usage Example:
 
 `partition_result<-three_set_partition(df_encoded_LR,888,"DONATED",0.5,0.25)`
 
-### Function 7. ensemble_train_partition(df,seed_num,train_index,sub_num,sub_portion)
+### Function 7. three_set_partition_no_target(df,seed_num, train_portion, test_portion)
+1. Purpose: Randomly split data into designated training portion, test portion and the rest is validation portion.
+2. Input: 1). df: data frame that used for partition
+          2). seed_num: desired seeding number
+          3). train_portion: portion of data select for training
+          4). test_portion: portion of data select for testing 
+            (rest for validation)
+3. Return:1). A list contain Training Index, Test Index & Validation Index
+4. Usage Example:
+
+`partition_result<-three_set_partition_no_target(df_encoded,888,0.5,0.25)`
+
+### Function 8. ensemble_train_partition(df,seed_num,train_index,sub_num,sub_portion)
 1. Purpose: From training index, randomly selected designated number of ensemble data set with designated portion
 2. Input: 1). df: data frame that used for training partition
           2). seed_num: desired seeding number
@@ -170,7 +184,7 @@ None
 
 `train_partitions_index<-ensemble_train_partition(df_encoded_LR,888,train_index_encoded,10,0.6)`
 
-### Function 8. check_class_imbalance(df,index_list,target_col,positive,negative)
+### Function 9. check_class_imbalance(df,index_list,target_col,positive,negative)
 1. Purpose: Check if there is class imbalance happened in partitioned dataset (can handle list & numeric)
 2. Input: 1). df: the data frame those index fall into
           2). index_list: the list of index you want to check if fall into class imbalance
@@ -182,7 +196,7 @@ None
 
 `check_class_imbalance(df_encoded_LR,train_partitions_index,"col_name",1,0)`
 
-### Function 9. backward_p(df,train_index,target_col,positive,positive_weight,negative_weight)
+### Function 10. backward_p_lr(df,train_index,target_col,positive,positive_weight,negative_weight)
 1. Purpose: Use ensemble data set train logistic regression model with backward p, that only keep important feature in model
 2. Input: 1). df: the data frame those index fall into
           2). train_index: the index for ensemble/not ensemble train 
@@ -197,13 +211,24 @@ None
 
 `positive_weight<-(positive_portion)/(negative_portion)`
 
-`logistic_model_list<-backward_p(df_encoded_LR,train_partitions_index,"col_name",1,positive_weight,1)`
+`logistic_model_list<-backward_p_lr(df_encoded_LR,train_partitions_index,"col_name",1,positive_weight,1)`
 
 * For Specific Model:
 
 `one_set<-unlist(train_partitions_index[[1]])`
 
 `logistic_model<-backward_p(df_encoded_LR,one_set,"col_name",1,positive_weight,1)`
+
+### Function 11. backward_p_mlr(df,train_index,target_col)
+1. Purpose: Train multiple linear regression model with backward p
+2. Input: 1). df: the data frame those index fall into
+          2). train_index: the index for ensemble/not ensemble train 
+          3). target_col: the target column that need to be predicted
+3. Return:1). A list of trained emseble Logistic Model Based on List of Index you provide
+4. Usage Example:
+
+`mlr_list<-backward_p_mlr(df_encoded,train_partition_index,"col_name")`
+
 
 ### Function 10. make_ensemble_predict(model_list,df,test_index)
 1. Purpose: Use ensembled logistic regression model make prediction
