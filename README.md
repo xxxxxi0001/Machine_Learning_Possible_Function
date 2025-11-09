@@ -307,7 +307,7 @@ None
 
               `weight_list<-ensemble_weight_RMSE(mlr_list,df_encoded,test_index,"col_name","log")`
 
-### Function 16. emsemble_result_with_weight(logistic_model_list,df,index,weight_list)
+### Function 17. emsemble_result_with_weight(logistic_model_list,df,index,weight_list)
 1. Purpose: Try Emsembled Logistic Regression Model with different index (could be test & validation data set)
 2. Input: 1). logistic_model_list: the logistic regression model you create with your ensemble list
           2). df: the data frame you use to make prediction
@@ -317,4 +317,36 @@ None
 4. Usage Example:
 
 `emsemble_result_with_weight(logistic_model_list,df_encoded_LR,validation_index_encoded,weight_list)`
+
+### Function 18. create_stack_model_mlr (df,target_col,test_index,model_list)
+1. Purpose: Generate a stack model with ensemble linear regression model
+2. Input: 1). df: data frame that you use to make prediction
+          2). target_col: that column that you want to make prediction for
+          3). test_index: the test index selected earlier
+          4). model_list: the list of ensemble model you made ealier
+3. Return:1). stack_model: stacked model you generate from ensemble models, which 
+              automatically gives how each model should contribute to the overall prediction
+4. Usage Example:
+
+`stack_model<-create_stack_model_mlr(df_encoded,"col_name",test_index,mlr_list)`
+
+### Function 19. stack_test_mlr (stack_model,model_list,df,validation_index,target_col,target_treatment)
+1. Purpose: Use stack model make prediction with validation data set
+2. Input: 1). stack_model: the stack model you build earlier with ensemble models
+          2). model_list: the list of ensemble model you made ealier
+          3). df: data frame that you use to make prediction
+          4). validation_index: index used for validation purpose
+          5). target_col: the feature you want to make prediction with
+          6). target_treatment: if target has been transformed, what type? 
+              accept "log","sqrt","square","none"
+3. Return:1). prediction_value: stack model's predict value
+          2). true_value: the actual value 
+4. Print: 1). rmse: error between true value and prediction value
+5. Usage Example:
+
+`result<-stack_test_mlr(stack_model,mlr_list,df_encoded,validation_index,"col_name","log")`
+
+`prediction_value<-result$prediction_value`
+
+`true_value<-result$true_value`
 
