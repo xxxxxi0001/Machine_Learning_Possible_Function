@@ -1,5 +1,5 @@
 ```{r}
-# Input: 1). data frame
+# Input: 1). df: data frame
 # Return: nothing, but will show if data frame has zero/NA value
 check_na_zero<-function(df){
   
