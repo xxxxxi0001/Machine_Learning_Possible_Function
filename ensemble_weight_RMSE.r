@@ -1,4 +1,3 @@
-```{r}
 # Input: 1). x: the variable that's been or not been transformed
 #        2). treatment: could be "log","sqrt","square","none"
 # Return:1). Transform back original value
