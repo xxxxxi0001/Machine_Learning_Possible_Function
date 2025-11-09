@@ -1,4 +1,5 @@
-\# Input: 1). x: the variable that's been or not been transformed
+```{r}
+# Input: 1). x: the variable that's been or not been transformed
 #        2). treatment: could be "log","sqrt","square","none"
 # Return:1). Transform back original value
 reverse_num<-function(x,treatment) {
@@ -25,8 +26,8 @@ ensemble_weight_RMSE<-function(model_list,df,test_index,target_col,target_treatm
     real_value<-df_encoded[[target_col]][test_index]
     prediction_value<-prediction[[i]]
     
-    reverse_num(real_value,target_treatment)
-    reverse_num(prediction_value,target_treatment)
+    real_value<-reverse_num(real_value,target_treatment)
+    prediction_value<-reverse_num(prediction_value,target_treatment)
     
     rmse[i]<-sqrt(mean((real_value-prediction_value)^2))
     cat("The model",i,"'s RMSE is",round(rmse[i],3),"\n")
@@ -40,3 +41,4 @@ ensemble_weight_RMSE<-function(model_list,df,test_index,target_col,target_treatm
   
   return(as.list(weight_list))
 }
+```
