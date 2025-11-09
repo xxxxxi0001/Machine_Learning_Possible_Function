@@ -142,8 +142,9 @@ None
 ### Function 5. check_mutilineariality(variables_df,threshold=0.8)
 1. Purpose: Check multilineariality that will introduce bia to logistic regression model
 2. Input: 1). variables_df: variables selected for multilineariality checking (has to be numerical)
-3. Return:Nothing will return but will tell you what features are highly correlated
-4. Usage Example:
+          2). threshold: above what correlational value is considered as strong correlation
+4. Return:Nothing will return but will tell you what features are highly correlated
+5. Usage Example:
 
 `variables<-df_LR[,c("col1","col2")]`
 
