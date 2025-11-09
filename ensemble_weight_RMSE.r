@@ -31,9 +31,12 @@ ensemble_weight_RMSE<-function(model_list,df,test_index,target_col,target_treatm
     real_value<-df_encoded[[target_col]][test_index]
     prediction_value<-prediction[[i]]
     
-    real_value<-reverse_num(real_value,target_treatment)
-    prediction_value<-reverse_num(prediction_value,target_treatment)
-    
+    # Only run into reverse_num if transformation occured
+    if (tolower(target_treatment)!="none") {
+      real_value<-reverse_num(real_value,target_treatment)
+      prediction_value<-reverse_num(prediction_value,target_treatment)
+    }
+
     rmse[i]<-sqrt(mean((real_value-prediction_value)^2))
     cat("The model",i,"'s RMSE is",round(rmse[i],3),"\n")
     
