@@ -16,11 +16,17 @@ reverse_num<-function(x,treatment) {
 #        5). target_treatment: if target column has been transformed, what method it use
 # Return:1). weight_list: how each model should contribute to overall prediction
 ensemble_weight_RMSE<-function(model_list,df,test_index,target_col,target_treatment) {
+  
+  # Initialization
   prediction<-list()
   rmse<-numeric(length(model_list))
   weight_list<-numeric(length(model_list))
   rmse_total<-0
   
+  # For each model, make prediction with test index & get their 
+  # original value with function `reverse_num`
+  # Then use original value calculate rmse & rmse total for 
+  # later weight calculation
   for (i in 1:length(model_list)) {
     prediction[[i]]<-predict(model_list[[i]],df[test_index,])
     real_value<-df_encoded[[target_col]][test_index]
@@ -35,10 +41,10 @@ ensemble_weight_RMSE<-function(model_list,df,test_index,target_col,target_treatm
     rmse_total<-rmse[i]+rmse_total
   }
   
+  # Calculate weight and output result
   weight_list<-(1/rmse^2)/sum(1/rmse^2)
-  
   cat("Each of their weight are",round(as.numeric(weight_list),3),".")
   
+  # Return weight for later use
   return(as.list(weight_list))
 }
-```
