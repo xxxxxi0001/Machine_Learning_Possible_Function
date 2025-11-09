@@ -230,7 +230,7 @@ None
 `mlr_list<-backward_p_mlr(df_encoded,train_partition_index,"col_name")`
 
 
-### Function 10. make_ensemble_predict(model_list,df,test_index)
+### Function 12. make_ensemble_predict(model_list,df,test_index)
 1. Purpose: Use ensembled logistic regression model make prediction
 2. Input: 1). model_list: list of logistic regression model
           2). df:  the data frame those index fall into
@@ -240,7 +240,7 @@ None
 
 `ensemble_predictions<-make_ensemble_predict(logistic_model_list,df_encoded_LR,test_index_encoded)`
 
-### Function 11. check_model_performance(predict_prob, threshold, positive, negative, df, test_index, target_col)
+### Function 13. check_model_performance(predict_prob, threshold, positive, negative, df, test_index, target_col)
 1. Purpose: Calculate and output accuracy, tpr, tnr, F1 value to monitor model's performance
 2. Input: 1). predict_prob: the prediction result (in probability/response)
           2). threshold: above what number is positive
@@ -254,7 +254,7 @@ None
 
 `check_model_performance(ensemble_predictions,0.5,1,0,df_encoded_LR,test_index_encoded,"col_name")`
 
-### Function 12. find_best_threshold(predict_prob, df,test_index, target_col, positive, negative)
+### Function 14. find_best_threshold(predict_prob, df,test_index, target_col, positive, negative)
 1. Purpose: Find the best threshold for this model to make a prediction with F1 value
 2. Reminder: target must be numerical value
 3. Input: 1). predict_prob: the prediction result (in probability/response)
@@ -268,7 +268,7 @@ None
 
 `best_threshold<-find_best_threshold(ensemble_predictions,df_encoded_LR,test_index_encoded,"col_name",1,0)`
 
-### Function 13. ensemble_weight(logistic_model_list, df,test_index, best_threshold, target_col, positive, negative)
+### Function 15. ensemble_weight(logistic_model_list, df,test_index, best_threshold, target_col, positive, negative)
 1. Purpose: Calculate each ensemble's weight for later tuning
 2. Input: 1). logistic_model_list: the logistic regression model you create with your ensemble list
           2). df: the data frame you use to make prediction
@@ -282,7 +282,7 @@ None
 
 `weight_list<-ensemble_weight(logistic_model_list,df_encoded_LR,test_index_encoded,best_threshold,"col_name",1,0)`
 
-### Function 14. get_emsemble_result(logistic_model_list,df,index,weight_list)
+### Function 16. get_emsemble_result(logistic_model_list,df,index,weight_list)
 1. Purpose: Try Emsembled Logistic Regression Model with different index (could be test & validation data set)
 2. Input: 1). logistic_model_list: the logistic regression model you create with your ensemble list
           2). df: the data frame you use to make prediction
