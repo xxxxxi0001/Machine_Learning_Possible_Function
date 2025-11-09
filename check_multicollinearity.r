@@ -2,7 +2,7 @@
 # Input: 1). variables_df: variables selected for multilineariality checking (has to be numerical)
 #        2). threshold: above what correlational value is considered as strong correlation
 # Return:Nothing will return but will tell you what features are highly correlated
-check_mutilineariality<-function(variables_df, threshold=0.8) {
+check_multicollinearity<-function(variables_df, threshold=0.8) {
   
   # create a data frame of correlational relationship between these variables
   cor_df<-as.data.frame(as.table(cor(variables_df,use="complete.obs")))
