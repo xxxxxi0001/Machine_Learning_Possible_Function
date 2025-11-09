@@ -34,6 +34,7 @@ initialize_test_k_index<-function(seed_num,test_proportion,not_na_index) {
 #        2). test_k_index: the index you wanna use to test best k
 #        3). df_distance: the euclidean distance matrix build before
 #        4). not_na_index: the not_na_index you get from previous function
+#        5). target_feature: the feature that has NA and you want to impute
 # Return:1). smallest_k used for kNN imputation
 
 find_best_k<-function(max_k,test_k_index,df_distance,not_na_index,target_feature){
