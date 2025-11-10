@@ -1,4 +1,4 @@
-# kNN Imputation (completely 5 functions)
+# kNN Imputation (completely 6 functions)
 
 # Function 1
 # Input: 1). df: data frame that need to be treated
@@ -140,4 +140,38 @@ kNN_Imputation<-function(df,smallest_k,target_feature,df_distance){
     target_feature[i]<-round(mean(target_feature[closest_k]))
   }
   return(target_feature)
+}
+
+# Function 6
+# Input: 1). df: the data frame that has NA need kNN imputation treatment
+#        2). ignore_cols: columns name that does not need its NA be treated
+# Return:1). df: data frame with designated column successfully impute
+# Usage Example: automation_knn_imputation(df,ignore_col=c("a","b"))
+automation_knn_imputation<-function(df,ignore_col=NULL) {
+
+  # Collect all column name with NA
+  na_col_name<-names(df)[colSums(is.na(df))>0]
+
+  # If there are columns want to be ignored, remove them from column name
+  if (!is.null(ignore_col)) {
+    na_col_name<-setdiff(na_col_name,ignore_col)
+  }
+
+  # For all column's that their NA need to be impute, call functions sequentially 
+  # This function will tell you which column it is working on & how it plans to work on
+  for (i in na_col_name) {
+    target_feature<-df[[i]]
+    df_distance<-initialize_distance_find_best_k(df)
+    not_na_index<-initialize_not_na_index(target_feature)
+    test_k_index<-initialize_test_k_index(888,0.1,not_na_index)
+    cat("Now is processing column",i,"\n")
+    smallest_k<-find_best_k(20,test_k_index,df_distance,not_na_index,target_feature)
+    df[[i]]<-kNN_Imputation(df,smallest_k,target_feature,df_distance)
+    cat("Feature",i,"is successfully imputed. \n")
+    
+    # Remove unncessary information to release storage
+    rm(df_distance)
+    gc()
+  }
+  return(df)
 }
