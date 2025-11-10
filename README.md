@@ -14,26 +14,32 @@ This include how to use these function
       initialize_test_k_index | 
       find_best_k | 
       kNN_Imputation}
+
 {Feature Engineering} 
-6.  check_multicollinearity
+
+5.  check_multicollinearity
+
 {Modeling}
-8.  three_set_partition
-9.  three_set_partition_no_target
-10.  ensemble_train_partition
-11. check_class_imbalance
-12. backward_p_lr
-13. backward_p_mlr
-14. make_ensemble_predict
-15. check_model_performance
+
+6.  three_set_partition
+7.  three_set_partition_no_target
+8.  ensemble_train_partition
+9. check_class_imbalance
+10. backward_p_lr
+11. backward_p_mlr
+12. make_ensemble_predict
+13. check_model_performance
+
 {Tuning}
-17. find_best_threshold
-18. ensemble_weight_F1
-19. ensemble_weight_RMSE
+
+14. find_best_threshold
+15. ensemble_weight_F1
+16. ensemble_weight_RMSE
           {reverse_num | 
           ensemble_weight_RMSE}          
-20. emsemble_result_with_weight
-21. create_stack_model_mlr
-22. stack_test_mlr
+17. emsemble_result_with_weight
+18. create_stack_model_mlr
+19. stack_test_mlr
 
 ## Technologies Used
 - **R** 
