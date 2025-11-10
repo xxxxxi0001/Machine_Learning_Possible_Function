@@ -14,7 +14,7 @@ three_set_partition<-function(df,seed_num, target_col, train_portion, test_porti
   # Set seed for repeat
   set.seed(seed_num)
 
-  # Get donated/not donated index
+  # Get positive/negative index
   donated_index<-which(df[[target_col]]==positive)
   not_donated_index<-which(df[[target_col]]==negative)
 
