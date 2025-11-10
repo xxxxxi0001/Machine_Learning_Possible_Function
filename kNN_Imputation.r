@@ -56,7 +56,7 @@ find_best_k<-function(max_k,test_k_index,df_distance,not_na_index,target_feature
   smallest_k<-Inf
   df_temp<-df_distance
   
-  # We gonna test k from 1 to 20
+  # We gonna test k from 1 to k
   for (k in 1:max_k) {
   
     # Initialization for total standard error
