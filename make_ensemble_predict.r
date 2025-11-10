@@ -23,3 +23,24 @@ make_ensemble_predict<-function (model_list,df,test_index,target_treatment="none
   
   return(ensemble_predictions)
 }
+
+# Input: 1). x: the variable that's been or not been transformed
+#        2). treatment: could be "log","log1p","sqrt","square","none"
+# Return:1). Transform back original value
+reverse_num<-function(x,treatment) {
+  if (tolower(treatment)=="log") {
+    return(exp(x))
+    }
+  if (tolower(treatment)=="log1p") {
+    return(exp(x)-1)
+    }
+  if (tolower(treatment)=="sqrt") {
+    return(x^2)
+    }
+  if (tolower(treatment)=="square") {
+    return(sqrt(x))
+    }
+  if (tolower(treatment)=="none") {
+    return(x)
+    }
+}
