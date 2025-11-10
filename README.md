@@ -24,10 +24,10 @@ This include how to use these function
 6.  three_set_partition
 7.  three_set_partition_no_target
 8.  ensemble_train_partition
-9. check_class_imbalance
+9.  check_class_imbalance
 10. backward_p_lr
 11. backward_p_mlr
-12. make_ensemble_predict
+12. make_ensemble_predict {reverse_num | make_ensemble_predict}
 13. check_model_performance
 
 {Tuning}
@@ -37,9 +37,9 @@ This include how to use these function
 16. ensemble_weight_RMSE
           {reverse_num | 
           ensemble_weight_RMSE}          
-17. emsemble_result_with_weight
+17. emsemble_result_with_weight {reverse_num | emsemble_result_with_weight}
 18. create_stack_model_mlr
-19. stack_test_mlr
+19. stack_test_mlr {reverse_num | stack_test_mlr}
 
 ## Technologies Used
 - **R** 
