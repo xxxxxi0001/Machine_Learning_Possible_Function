@@ -1,7 +1,6 @@
 # kNN Imputation (completely 5 functions)
 
 # Input: 1). df: data frame that need to be treated
-#        2). target_feature: specific column that need to be treated
 # Return:1). df_distance: the euclidean distance list that will be used
 initialize_distance_find_best_k<-function(df){
   numerical_columns<-names(df)[sapply(df,is.numeric)]
