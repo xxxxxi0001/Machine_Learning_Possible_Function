@@ -27,7 +27,7 @@ three_set_partition_no_target<-function(df,seed_num, train_portion, test_portion
   test_size<-nr*test_num
   test_index<-sample(rest_index,size=test_size)
   
-  # Lest is validation
+  # Rest is validation
   validation_index<-setdiff(setdiff(1:n,train_index),test_index)
   
   # Return train, test, validation index as a list
