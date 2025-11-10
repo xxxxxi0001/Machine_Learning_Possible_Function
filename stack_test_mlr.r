@@ -1,24 +1,3 @@
-# Input: 1). x: the variable that's been or not been transformed
-#        2). treatment: could be "log","log1p","sqrt","square","none"
-# Return:1). Transform back original value
-reverse_num<-function(x,treatment) {
-  if (tolower(treatment)=="log") {
-    return(exp(x))
-    }
-  if (tolower(treatment)=="log1p") {
-    return(exp(x)-1)
-    }
-  if (tolower(treatment)=="sqrt") {
-    return(x^2)
-    }
-  if (tolower(treatment)=="square") {
-    return(sqrt(x))
-    }
-  if (tolower(treatment)=="none") {
-    return(x)
-    }
-}
-
 # Input: 1). stack_model: the stack model you build earlier with ensemble models
 #        2). model_list: the list of ensemble model you made ealier
 #        3). df: data frame that you use to make prediction
@@ -63,3 +42,25 @@ stack_test_mlr<-function (stack_model,model_list,df,validation_index,target_col,
     true_value=true_value
   ))
 }
+
+# Input: 1). x: the variable that's been or not been transformed
+#        2). treatment: could be "log","log1p","sqrt","square","none"
+# Return:1). Transform back original value
+reverse_num<-function(x,treatment) {
+  if (tolower(treatment)=="log") {
+    return(exp(x))
+    }
+  if (tolower(treatment)=="log1p") {
+    return(exp(x)-1)
+    }
+  if (tolower(treatment)=="sqrt") {
+    return(x^2)
+    }
+  if (tolower(treatment)=="square") {
+    return(sqrt(x))
+    }
+  if (tolower(treatment)=="none") {
+    return(x)
+    }
+}
+
