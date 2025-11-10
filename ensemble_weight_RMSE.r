@@ -1,13 +1,3 @@
-# Input: 1). x: the variable that's been or not been transformed
-#        2). treatment: could be "log","sqrt","square","none"
-# Return:1). Transform back original value
-reverse_num<-function(x,treatment) {
-  if (treatment=="log") return(exp(x))
-  if (treatment=="sqrt") return(x^2)
-  if (treatment=="square") return(sqrt(x))
-  if (treatment=="none") return(x)
-}
-
 # Input: 1). model_list: the list of ensemble model
 #        2). df: data frame that you use to make prediction
 #        3). test_index: the test index selected earlier
@@ -49,4 +39,25 @@ ensemble_weight_RMSE<-function(model_list,df,test_index,target_col,target_treatm
   
   # Return weight for later use
   return(as.list(weight_list))
+}
+
+# Input: 1). x: the variable that's been or not been transformed
+#        2). treatment: could be "log","log1p","sqrt","square","none"
+# Return:1). Transform back original value
+reverse_num<-function(x,treatment) {
+  if (tolower(treatment)=="log") {
+    return(exp(x))
+    }
+  if (tolower(treatment)=="log1p") {
+    return(exp(x)-1)
+    }
+  if (tolower(treatment)=="sqrt") {
+    return(x^2)
+    }
+  if (tolower(treatment)=="square") {
+    return(sqrt(x))
+    }
+  if (tolower(treatment)=="none") {
+    return(x)
+    }
 }
