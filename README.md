@@ -156,7 +156,7 @@ None
 4. Return:Nothing will return but will tell you what features are highly correlated
 5. Usage Example:
 
-`variables<-df_LR[,c("col1","col2")]`
+`variables<-df[,c("col1","col2")]`
 
 `check_multicollinearity(variables)`
 
@@ -174,7 +174,7 @@ None
 3. Return:1). A list contain Training Index, Test Index & Validation Index
 4. Usage Example:
 
-`partition_result<-three_set_partition(df_encoded_LR,888,"DONATED",0.5,0.25)`
+`partition_result<-three_set_partition(df,888,"col_name",0.5,0.25)`
 
 ### Function 7. three_set_partition_no_target(df,seed_num, train_portion, test_portion)
 1. Purpose: Randomly split data into designated training portion, test portion and the rest is validation portion.
@@ -186,7 +186,7 @@ None
 3. Return:1). A list contain Training Index, Test Index & Validation Index
 4. Usage Example:
 
-`partition_result<-three_set_partition_no_target(df_encoded,888,0.5,0.25)`
+`partition_result<-three_set_partition_no_target(df,888,0.5,0.25)`
 
 ### Function 8. ensemble_train_partition(df,seed_num,train_index,sub_num,sub_portion)
 1. Purpose: From training index, randomly selected designated number of ensemble data set with designated portion
@@ -198,7 +198,7 @@ None
 3. Return:1). A list contain sub_num number of training index
 4. Usage Example:
 
-`train_partitions_index<-ensemble_train_partition(df_encoded_LR,888,train_index_encoded,10,0.6)`
+`train_partitions_index<-ensemble_train_partition(df,888,train_index,10,0.6)`
 
 ### Function 9. check_class_imbalance(df,index_list,target_col,positive,negative)
 1. Purpose: Check if there is class imbalance happened in partitioned dataset (can handle list & numeric)
@@ -210,7 +210,7 @@ None
 3. Return: No Return, but will output result
 4. Usage Example:
 
-`check_class_imbalance(df_encoded_LR,train_partitions_index,"col_name",1,0)`
+`check_class_imbalance(df,train_partitions_index,"col_name",1,0)`
 
 ### Function 10. backward_p_lr(df,train_index,target_col,positive,positive_weight,negative_weight)
 1. Purpose: Use ensemble data set train logistic regression model with backward p, that only keep important feature in model
@@ -227,13 +227,13 @@ None
 
 `positive_weight<-(positive_portion)/(negative_portion)`
 
-`logistic_model_list<-backward_p_lr(df_encoded_LR,train_partitions_index,"col_name",1,positive_weight,1)`
+`logistic_model_list<-backward_p_lr(df,index_list,"col_name",1,positive_weight,1)`
 
 * For Specific Model:
 
-`one_set<-unlist(train_partitions_index[[1]])`
+`one_set<-unlist(index_list[[1]])`
 
-`logistic_model<-backward_p(df_encoded_LR,one_set,"col_name",1,positive_weight,1)`
+`logistic_model<-backward_p(df,one_set,"col_name",1,positive_weight,1)`
 
 ### Function 11. backward_p_mlr(df,train_index,target_col)
 1. Purpose: Train multiple linear regression model with backward p
@@ -243,7 +243,7 @@ None
 3. Return:1). A list of trained emseble Logistic Model Based on List of Index you provide
 4. Usage Example:
 
-`mlr_list<-backward_p_mlr(df_encoded,train_partition_index,"col_name")`
+`mlr_list<-backward_p_mlr(df,train_index,"col_name")`
 
 
 ### Function 12. make_ensemble_predict(model_list,df,test_index)
@@ -254,7 +254,7 @@ None
 3. Return:1). Mean Prediction made by number of ensemble's logistic model
 4. Usage Example:
 
-`ensemble_predictions<-make_ensemble_predict(logistic_model_list,df_encoded_LR,test_index_encoded)`
+`ensemble_predictions<-make_ensemble_predict(logistic_model_list,df,test_index)`
 
 ### Function 13. check_model_performance(predict_prob, threshold, positive, negative, df, test_index, target_col)
 1. Purpose: Calculate and output accuracy, tpr, tnr, F1 value to monitor model's performance
@@ -268,7 +268,7 @@ None
 3. Return:No return but will automatically give you how accurate your model is with accuracy, tpr, tnr, F1 value
 4. Usage Example:
 
-`check_model_performance(ensemble_predictions,0.5,1,0,df_encoded_LR,test_index_encoded,"col_name")`
+`check_model_performance(ensemble_predictions,0.5,1,0,df,test_index,"col_name")`
 
 ### Function 14. find_best_threshold(predict_prob, df,test_index, target_col, positive, negative)
 1. Purpose: Find the best threshold for this model to make a prediction with F1 value
@@ -282,7 +282,7 @@ None
 4. Return:1). best F1 value
 5. Usage Example:
 
-`best_threshold<-find_best_threshold(ensemble_predictions,df_encoded_LR,test_index_encoded,"col_name",1,0)`
+`best_threshold<-find_best_threshold(ensemble_predictions,df,test_index,"col_name",1,0)`
 
 ### Function 15. ensemble_weight_F1(logistic_model_list, df,test_index, best_threshold, target_col, positive, negative)
 1. Purpose: Calculate each ensemble's weight for later tuning
@@ -296,7 +296,7 @@ None
 3. Return:1). Each Ensemble Model's Weight
 4. Usage Example:
 
-`weight_list<-ensemble_weight_F1(logistic_model_list,df_encoded_LR,test_index_encoded,best_threshold,"col_name",1,0)`
+`weight_list<-ensemble_weight_F1(logistic_model_list,df,test_index,best_threshold,"col_name",1,0)`
 
 ### Function 16. ensemble_weight_RMSE
 1. Purpose: Use RMSE to define how each ensemble model should be weight
@@ -316,7 +316,7 @@ None
               Return:1). weight_list: how each model should contribute to overall prediction
               Usage Example:
 
-              `weight_list<-ensemble_weight_RMSE(mlr_list,df_encoded,test_index,"col_name","log")`
+              `weight_list<-ensemble_weight_RMSE(mlr_list,df,test_index,"col_name","log")`
 
 ### Function 17. emsemble_result_with_weight(logistic_model_list,df,index,weight_list)
 1. Purpose: Try Emsembled Logistic Regression Model with different index (could be test & validation data set)
@@ -327,7 +327,7 @@ None
 3. Return:1). ensemble_predictions: list of prediction (in probability) made with ensemble Logistic Regression model
 4. Usage Example:
 
-`emsemble_result_with_weight(logistic_model_list,df_encoded_LR,validation_index_encoded,weight_list)`
+`emsemble_result_with_weight(logistic_model_list,df,validation_index,weight_list)`
 
 ### Function 18. create_stack_model_mlr (df,target_col,test_index,model_list)
 1. Purpose: Generate a stack model with ensemble linear regression model
@@ -339,7 +339,7 @@ None
               automatically gives how each model should contribute to the overall prediction
 4. Usage Example:
 
-`stack_model<-create_stack_model_mlr(df_encoded,"col_name",test_index,mlr_list)`
+`stack_model<-create_stack_model_mlr(df,"col_name",test_index,mlr_list)`
 
 ### Function 19. stack_test_mlr (stack_model,model_list,df,validation_index,target_col,target_treatment)
 1. Purpose: Use stack model make prediction with validation data set
@@ -355,7 +355,7 @@ None
 4. Print: 1). rmse: error between true value and prediction value
 5. Usage Example:
 
-`result<-stack_test_mlr(stack_model,mlr_list,df_encoded,validation_index,"col_name","log")`
+`result<-stack_test_mlr(stack_model,mlr_list,df,validation_index,"col_name","log")`
 
 `prediction_value<-result$prediction_value`
 
