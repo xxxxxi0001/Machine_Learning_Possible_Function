@@ -1,24 +1,3 @@
-# Input: 1). x: the variable that's been or not been transformed
-#        2). treatment: could be "log","log1p","sqrt","square","none"
-# Return:1). Transform back original value
-reverse_num<-function(x,treatment) {
-  if (tolower(treatment)=="log") {
-    return(exp(x))
-    }
-  if (tolower(treatment)=="log1p") {
-    return(exp(x)-1)
-    }
-  if (tolower(treatment)=="sqrt") {
-    return(x^2)
-    }
-  if (tolower(treatment)=="square") {
-    return(sqrt(x))
-    }
-  if (tolower(treatment)=="none") {
-    return(x)
-    }
-}
-
 # Input: 1). model_list: the logistic regression model you create with your ensemble list
 #        2). df: the data frame you use to make prediction
 #        3). index: the index you wanna try with this model (usually test & val index)
@@ -46,4 +25,25 @@ emsemble_result_with_weight<-function(model_list,df,index,weight_list,target_tre
     ensemble_predictions<-reverse_num(ensemble_predictions,target_treatment)
   }
   return(ensemble_predictions)
+}
+
+# Input: 1). x: the variable that's been or not been transformed
+#        2). treatment: could be "log","log1p","sqrt","square","none"
+# Return:1). Transform back original value
+reverse_num<-function(x,treatment) {
+  if (tolower(treatment)=="log") {
+    return(exp(x))
+    }
+  if (tolower(treatment)=="log1p") {
+    return(exp(x)-1)
+    }
+  if (tolower(treatment)=="sqrt") {
+    return(x^2)
+    }
+  if (tolower(treatment)=="square") {
+    return(sqrt(x))
+    }
+  if (tolower(treatment)=="none") {
+    return(x)
+    }
 }
