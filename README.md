@@ -8,12 +8,13 @@ This include how to use these function
 1.  check_na_zero
 2.  replace_na_with_zero
 3.  IQR_outlier
-4.  kNN Imputation
+4.  automated kNN Imputation
       {initialize_distance_find_best_k | 
       initialize_not_na_index | 
       initialize_test_k_index | 
       find_best_k | 
-      kNN_Imputation}
+      kNN_Imputation |
+      automation_knn_imputation}
 
 {Feature Engineering} 
 
@@ -89,17 +90,7 @@ None
 1. Purpose: Replace NA value with kNN Imputation (work on data set if their features could relate to each other)
 2. Usage Example: 
 
-`target_feature<-df$col_name`
-
-`df_distance<-initialize_distance_find_best_k(df)`
-
-`not_na_index<-initialize_not_na_index(target_feature)`
-
-`test_k_index<-initialize_test_k_index(888,0.1,not_na_index)`
-
-`smallest_k<-find_best_k(20,test_k_index,df_distance,not_na_index,target_feature)`
-
-`df$col_name<-kNN_Imputation(df,smallest_k,target_feature,df_distance)`
+`df<-automation_knn_imputation(df,ignore_col=c("a","b"))`
 
        * Function 4.1 initialize_distance_find_best_k(df)
               Purpose: Get Euclidean Data Frame from features that does not have NA value for later imputation
@@ -149,6 +140,15 @@ None
 
                      `df$feature<-kNN_Imputation(df,smallest_k,target_feature,df_distance)`
 
+      * Function 4.6 automation_knn_imputation(df,ignore_col=NULL)
+            Purpose: Provide a dummy way to run all kNN imputation functions
+            Input: 1). df: the data frame that has NA need kNN imputation treatment
+                   2). ignore_cols: columns name that does not need its NA be treated
+            Return:1). df: data frame with designated column successfully impute
+            Usage Example: 
+            
+            `df<-automation_knn_imputation(df,ignore_col=c("a","b"))`
+            
 ### Function 5. check_multicollinearity(variables_df,threshold=0.8)
 1. Purpose: Check multicollinearity that will introduce bia to logistic regression model
 2. Input: 1). variables_df: variables selected for multilineariality checking (has to be numerical)
