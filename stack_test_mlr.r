@@ -14,7 +14,7 @@ stack_test_mlr<-function (stack_model,model_list,df,validation_index,target_col,
   stack_df_val<-data.frame(matrix(nrow=length(validation_index),ncol=0))
   
   # Input prediction value of each ensemble model made on validation index
-  # in format of mi<-prediction value
+  # in format of modeli<-prediction value
   for (i in 1:length(model_list)) {
     stack_df_val[[paste0("model",i)]]<-predict(model_list[[i]],df[validation_index,])
   }
