@@ -1,4 +1,3 @@
-```{r}
 # Input: 1). df: data frame
 # Return: nothing, but will show if data frame has zero/NA value
 check_na_zero<-function(df){
@@ -21,4 +20,3 @@ check_na_zero<-function(df){
     }
   }
 }
-```
