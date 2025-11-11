@@ -117,12 +117,12 @@ Check out the [kNN_Imputation](./kNN_Imputation.r#L1) implementation.
 
 * Check out the [initialize_distance_find_best_k](./kNN_Imputation.r#L6) implementation.
               
-      1. Purpose: Get Euclidean Data Frame from features that does not have NA value for later imputation
-      2. Input: 1). df: data frame that need to be treated
-      3. Return:1). df_distance: the euclidean distance list that will be used
-      4. Usage Example:
+1. Purpose: Get Euclidean Data Frame from features that does not have NA value for later imputation
+2. Input: 1). df: data frame that need to be treated
+3. Return:1). df_distance: the euclidean distance list that will be used
+4. Usage Example:
 
-            `df_distance<-initialize_distance_find_best_k(df)`
+`df_distance<-initialize_distance_find_best_k(df)`
                      
 * Function 4.2 initialize_not_na_index(target_feature)
 
