@@ -18,7 +18,7 @@ ensemble_weight_RMSE<-function(model_list,df,test_index,target_col,target_treatm
   # later weight calculation
   for (i in 1:length(model_list)) {
     prediction[[i]]<-predict(model_list[[i]],df[test_index,])
-    real_value<-df_encoded[[target_col]][test_index]
+    real_value<-df[[target_col]][test_index]
     prediction_value<-prediction[[i]]
     
     # Only run into reverse_num if transformation occured
