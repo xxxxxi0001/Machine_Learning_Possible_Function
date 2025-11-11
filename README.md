@@ -9,7 +9,7 @@ This include how to use these function
 2.  [replace_zero_with_na](./replace_zero_with_na.r#L1)
 3.  [iqr_outlier](./iqr_outlier.r#L1)
 4.  [kNN_Imputation](./kNN_Imputation.r#L1)
-      {[kNN_Imputation](./kNN_Imputation.r#L6) | 
+      {[initialize_distance_find_best_k](./kNN_Imputation.r#L6) | 
       [kNN_Imputation](./kNN_Imputation.r#L24) | 
       [kNN_Imputation](./kNN_Imputation.r#L36) | 
       [kNN_Imputation](./kNN_Imputation.r#L52) | 
@@ -98,7 +98,7 @@ Check out the [kNN_Imputation](./kNN_Imputation.r#L1) implementation.
 
 * Function 4.1 initialize_distance_find_best_k(df)
 
-* Check out the [kNN_Imputation](./kNN_Imputation.r#L6) implementation.
+* Check out the [initialize_distance_find_best_k](./kNN_Imputation.r#L6) implementation.
               
       1. Purpose: Get Euclidean Data Frame from features that does not have NA value for later imputation
       2. Input: 1). df: data frame that need to be treated
