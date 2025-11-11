@@ -201,6 +201,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 `check_multicollinearity(variables)`
 
 ### Function 6. three_set_partition(df,seed_num, target_col, train_portion, test_portion,positive,negative)
+Check out the [three_set_partition](./three_set_partition.r#L1) implementation.
 1. Purpose: Randomly split data into designated training portion, test portion and the rest is validation portion with stratified split method which avoid class imbalance
 2. Input: 1). df: data frame that used for partition
           2). seed_num: desired seeding number
@@ -217,6 +218,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 `partition_result<-three_set_partition(df,888,"col_name",0.5,0.25)`
 
 ### Function 7. three_set_partition_no_target(df,seed_num, train_portion, test_portion)
+Check out the [three_set_partition_no_target](./three_set_partition_no_target.r#L1) implementation.
 1. Purpose: Randomly split data into designated training portion, test portion and the rest is validation portion.
 2. Input: 1). df: data frame that used for partition
           2). seed_num: desired seeding number
@@ -229,6 +231,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 `partition_result<-three_set_partition_no_target(df,888,0.5,0.25)`
 
 ### Function 8. ensemble_train_partition(df,seed_num,train_index,sub_num,sub_portion)
+Check out the [ensemble_train_partition](./ensemble_train_partition.r#L1) implementation.
 1. Purpose: From training index, randomly selected designated number of ensemble data set with designated portion
 2. Input: 1). df: data frame that used for training partition
           2). seed_num: desired seeding number
@@ -241,6 +244,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 `train_partitions_index<-ensemble_train_partition(df,888,train_index,10,0.6)`
 
 ### Function 9. check_class_imbalance(df,index_list,target_col,positive,negative)
+Check out the [check_class_imbalance](./check_class_imbalance.r#L1) implementation.
 1. Purpose: Check if there is class imbalance happened in partitioned dataset (can handle list & numeric)
 2. Input: 1). df: the data frame those index fall into
           2). index_list: the list of index you want to check if fall into class imbalance
@@ -253,6 +257,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 `check_class_imbalance(df,train_partitions_index,"col_name",1,0)`
 
 ### Function 10. backward_p_lr(df,train_index,target_col,positive,positive_weight,negative_weight)
+Check out the [backward_p_lr](./backward_p_lr.r#L1) implementation.
 1. Purpose: Use ensemble data set train logistic regression model with backward p, that only keep important feature in model
 2. Input: 1). df: the data frame those index fall into
           2). train_index: the index for ensemble/not ensemble train 
@@ -276,6 +281,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 `logistic_model<-backward_p(df,one_set,"col_name",1,positive_weight,1)`
 
 ### Function 11. backward_p_mlr(df,train_index,target_col)
+Check out the [backward_p_mlr](./backward_p_mlr.r#L1) implementation.
 1. Purpose: Train multiple linear regression model with backward p
 2. Input: 1). df: the data frame those index fall into
           2). train_index: the index for ensemble/not ensemble train 
@@ -287,6 +293,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 
 
 ### Function 12. make_ensemble_predict(model_list,df,test_index)
+Check out the [make_ensemble_predict](./make_ensemble_predict.r#L1) implementation.
 1. Purpose: Use ensembled logistic regression model make prediction
 2. Input: 1). model_list: list of logistic regression model
           2). df:  the data frame those index fall into
@@ -297,6 +304,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 `ensemble_predictions<-make_ensemble_predict(logistic_model_list,df,test_index)`
 
 ### Function 13. check_model_performance(predict_prob, threshold, positive, negative, df, test_index, target_col)
+Check out the [check_model_performance](./check_model_performance.r#L1) implementation.
 1. Purpose: Calculate and output accuracy, tpr, tnr, F1 value to monitor model's performance
 2. Input: 1). predict_prob: the prediction result (in probability/response)
           2). threshold: above what number is positive
@@ -311,6 +319,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 `check_model_performance(ensemble_predictions,0.5,1,0,df,test_index,"col_name")`
 
 ### Function 14. find_best_threshold(predict_prob, df,test_index, target_col, positive, negative)
+Check out the [find_best_threshold](./find_best_threshold.r#L1) implementation.
 1. Purpose: Find the best threshold for this model to make a prediction with F1 value
 2. Reminder: target must be numerical value
 3. Input: 1). predict_prob: the prediction result (in probability/response)
@@ -325,6 +334,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 `best_threshold<-find_best_threshold(ensemble_predictions,df,test_index,"col_name",1,0)`
 
 ### Function 15. ensemble_weight_F1(logistic_model_list, df,test_index, best_threshold, target_col, positive, negative)
+Check out the [ensemble_weight_F1](./ensemble_weight_F1.r#L1) implementation.
 1. Purpose: Calculate each ensemble's weight for later tuning
 2. Input: 1). logistic_model_list: the logistic regression model you create with your ensemble list
           2). df: the data frame you use to make prediction
@@ -339,9 +349,11 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 `weight_list<-ensemble_weight_F1(logistic_model_list,df,test_index,best_threshold,"col_name",1,0)`
 
 ### Function 16. ensemble_weight_RMSE
+Check out the [ensemble_weight_RMSE](./ensemble_weight_RMSE.r#L1) implementation.
 1. Purpose: Use RMSE to define how each ensemble model should be weight
       
       * Function 16.1 reverse_num(x,treatment)
+      * Check out the [reverse_num](./ensemble_weight_RMSE.r#L47) implementation.
               Input: 1). x: the variable that's been or not been transformed
                      2). treatment: could be "log","sqrt","square","none"
               Return:1). Transform back original value
@@ -350,6 +362,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
                     `real_value<-reverse_num(real_value,target_treatment)`
         
       * Function 16.2  ensemble_weight_RMSE(model_list,df,test_index,target_col,target_treatment)
+      * Check out the [reverse_num](./ensemble_weight_RMSE.r#L7) implementation.
               Input: 1). model_list: the list of ensemble model
                      2). df: data frame that you use to make prediction
                      3). test_index: the test index selected earlier
@@ -361,6 +374,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
               `weight_list<-ensemble_weight_RMSE(mlr_list,df,test_index,"col_name","log")`
 
 ### Function 17. emsemble_result_with_weight(logistic_model_list,df,index,weight_list)
+Check out the [emsemble_result_with_weight](./emsemble_result_with_weight.r#L1) implementation.
 1. Purpose: Try Emsembled Logistic Regression Model with different index (could be test & validation data set)
 2. Input: 1). logistic_model_list: the logistic regression model you create with your ensemble list
           2). df: the data frame you use to make prediction
@@ -372,6 +386,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 `emsemble_result_with_weight(logistic_model_list,df,validation_index,weight_list)`
 
 ### Function 18. create_stack_model_mlr (df,target_col,test_index,model_list)
+Check out the [create_stack_model_mlr](./create_stack_model_mlr.r#L1) implementation.
 1. Purpose: Generate a stack model with ensemble linear regression model
 2. Input: 1). df: data frame that you use to make prediction
           2). target_col: that column that you want to make prediction for
@@ -384,6 +399,7 @@ Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implemen
 `stack_model<-create_stack_model_mlr(df,"col_name",test_index,mlr_list)`
 
 ### Function 19. stack_test_mlr (stack_model,model_list,df,validation_index,target_col,target_treatment)
+Check out the [stack_test_mlr](./stack_test_mlr.r#L1) implementation.
 1. Purpose: Use stack model make prediction with validation data set
 2. Input: 1). stack_model: the stack model you build earlier with ensemble models
           2). model_list: the list of ensemble model you made ealier
