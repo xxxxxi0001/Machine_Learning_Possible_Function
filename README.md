@@ -4,10 +4,15 @@
 This include how to use these function
 
 ## Key Functions
+
 {Data Cleaning}
+
 1.  [check_na_zero](./check_na.r#L1)
+
 2.  [replace_zero_with_na](./replace_zero_with_na.r#L1)
+
 3.  [iqr_outlier](./iqr_outlier.r#L1)
+
 4.  [kNN_Imputation](./kNN_Imputation.r#L1)
       {[initialize_distance_find_best_k](./kNN_Imputation.r#L6) | 
       [initialize_not_na_index](./kNN_Imputation.r#L24) | 
@@ -21,24 +26,37 @@ This include how to use these function
 5.  [check_multicollinearity](./check_multicollinearity.r#L1)
 
 {Modeling}
+
 6.  [three_set_partition](./three_set_partition.r#L1)
+
 7.  [three_set_partition_no_target](./three_set_partition_no_target.r#L1)
+
 8.  [ensemble_train_partition](./ensemble_train_partition.r#L1)
+
 9.  [check_class_imbalance](./check_class_imbalance.r#L1)
+
 10. [backward_p_lr](./backward_p_lr.r#L1)
+
 11. [backward_p_mlr](./backward_p_mlr.r#L1)
+
 12. [make_ensemble_predict](./make_ensemble_predict.r#L1) {reverse_num | make_ensemble_predict}
+
 13. [check_model_performance](./check_model_performance.r#L1)
 
 {Tuning}
 
 14. [find_best_threshold](./find_best_threshold.r#L1)
+
 15. [ensemble_weight_F1](./ensemble_weight_F1.r#L1)
+
 16. [ensemble_weight_RMSE](./ensemble_weight_RMSE.r#L1)
           {reverse_num | 
           ensemble_weight_RMSE}          
+
 17. [emsemble_result_with_weight](./emsemble_result_with_weight.r#L1) {reverse_num | emsemble_result_with_weight}
+
 18. [create_stack_model_mlr](./create_stack_model_mlr.r#L1)
+
 19. [stack_test_mlr](./stack_test_mlr.r#L1) {reverse_num | stack_test_mlr}
 
 ## Technologies Used
