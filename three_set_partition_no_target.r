@@ -24,7 +24,7 @@ three_set_partition_no_target<-function(df,seed_num, train_portion, test_portion
   # From rest, get test_index
   nr<-length(rest_index)
   test_num<-test_portion/(1-train_portion)
-  test_size<-nr*test_num
+  test_size<-floor(nr*test_num)
   test_index<-sample(rest_index,size=test_size)
   
   # Rest is validation
