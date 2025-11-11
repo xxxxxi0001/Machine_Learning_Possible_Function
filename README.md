@@ -98,7 +98,7 @@ Check out the [kNN_Imputation](./kNN_Imputation.r#L1) implementation.
 
 * Function 4.1 initialize_distance_find_best_k(df)
 
-Check out the [kNN_Imputation](./kNN_Imputation.r#L6) implementation.
+* Check out the [kNN_Imputation](./kNN_Imputation.r#L6) implementation.
               
       1. Purpose: Get Euclidean Data Frame from features that does not have NA value for later imputation
       2. Input: 1). df: data frame that need to be treated
@@ -109,7 +109,7 @@ Check out the [kNN_Imputation](./kNN_Imputation.r#L6) implementation.
                      
 * Function 4.2 initialize_not_na_index(target_feature)
 
-Check out the [kNN_Imputation](./kNN_Imputation.r#L24) implementation.
+* Check out the [kNN_Imputation](./kNN_Imputation.r#L24) implementation.
               
       1. Purpose: Get target features index that are not NA for find best k
       2. Input: 1). target_feature: specific feature that need to find not na value
@@ -120,7 +120,7 @@ Check out the [kNN_Imputation](./kNN_Imputation.r#L24) implementation.
 
 * Function 4.3 initialize_test_k_index(seed_num,test_proportion,not_na_index)
 
-Check out the [kNN_Imputation](./kNN_Imputation.r#L36) implementation.
+* Check out the [kNN_Imputation](./kNN_Imputation.r#L36) implementation.
               
       1. Purpose: From index that does not have NA value, randomly choose certain portion of data to test the best k for this feature
       2. Input: 1). seed_num: number you want to set seed for
@@ -133,7 +133,7 @@ Check out the [kNN_Imputation](./kNN_Imputation.r#L36) implementation.
               
 * Function 4.4 find_best_k(max_k,test_k_index,df_distance,not_na_index,target_feature)
 
-Check out the [kNN_Imputation](./kNN_Imputation.r#L52) implementation.
+* Check out the [kNN_Imputation](./kNN_Imputation.r#L52) implementation.
               
       1. Purpose: Use the index earlier to find the best k for this feature that give smallest error
       2. Input: 1). max_k: number of k you wanna test
@@ -147,7 +147,7 @@ Check out the [kNN_Imputation](./kNN_Imputation.r#L52) implementation.
                      
 * Function 4.5 kNN_Imputation(df,smallest_k,target_feature,df_distance)
 
-Check out the [kNN_Imputation](./kNN_Imputation.r#L120) implementation.
+* Check out the [kNN_Imputation](./kNN_Imputation.r#L120) implementation.
               
       1. Purpose: Use the best k perform kNN imputation
       2. Input: 1). df: data frame that need NA kNN imputation treatment
@@ -161,7 +161,7 @@ Check out the [kNN_Imputation](./kNN_Imputation.r#L120) implementation.
 
 * Function 4.6 automation_knn_imputation(df,ignore_col=NULL)
 
-Check out the [kNN_Imputation](./kNN_Imputation.r#L150) implementation.
+* Check out the [kNN_Imputation](./kNN_Imputation.r#L150) implementation.
             
       1. Purpose: Provide a dummy way to run all kNN imputation functions
       2. Input: 1). df: the data frame that has NA need kNN imputation treatment
