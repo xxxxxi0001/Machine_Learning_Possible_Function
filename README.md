@@ -18,7 +18,7 @@ This include how to use these function
 
 {Feature Engineering} 
 
-5.  check_multicollinearity
+5.  [check_multicollinearity](./check_multicollinearity.r#L1)
 
 {Modeling}
 
