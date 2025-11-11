@@ -57,7 +57,7 @@ None
 
 
 ### Function 1. check_na_zero(df)
-Check out the [check_na_zero](./check_na_zero.r#L1) implementation.
+Check out the [check_na_zero](./check_na.r#L1) implementation.
 1. Purpose: Check to see if Data Frame has NA value 
 2. Input: 1). Data Frame
 3. Return: nothing, but will show if data frame has zero/NA value
