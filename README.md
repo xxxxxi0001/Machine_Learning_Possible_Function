@@ -147,7 +147,7 @@ None
             Return:1). df: data frame with designated column successfully impute
             Usage Example: 
             
-            `df<-automation_knn_imputation(df,ignore_col=c("a","b"))`
+                  `df<-automation_knn_imputation(df,ignore_col=c("a","b"))`
             
 ### Function 5. check_multicollinearity(variables_df,threshold=0.8)
 1. Purpose: Check multicollinearity that will introduce bia to logistic regression model
