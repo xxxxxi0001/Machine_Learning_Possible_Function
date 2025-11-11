@@ -172,6 +172,7 @@ Check out the [kNN_Imputation](./kNN_Imputation.r#L1) implementation.
                   `df<-automation_knn_imputation(df,ignore_col=c("a","b"))`
             
 ### Function 5. check_multicollinearity(variables_df,threshold=0.8)
+Check out the [check_multicollinearity](./check_multicollinearity.r#L1) implementation.
 1. Purpose: Check multicollinearity that will introduce bia to logistic regression model
 2. Input: 1). variables_df: variables selected for multilineariality checking (has to be numerical)
           2). threshold: above what correlational value is considered as strong correlation
