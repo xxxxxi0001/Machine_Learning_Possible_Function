@@ -352,26 +352,26 @@ Check out the [ensemble_weight_F1](./ensemble_weight_F1.r#L1) implementation.
 Check out the [ensemble_weight_RMSE](./ensemble_weight_RMSE.r#L1) implementation.
 1. Purpose: Use RMSE to define how each ensemble model should be weight
       
-      * Function 16.1 reverse_num(x,treatment)
-      * Check out the [reverse_num](./ensemble_weight_RMSE.r#L47) implementation.
-              Input: 1). x: the variable that's been or not been transformed
-                     2). treatment: could be "log","sqrt","square","none"
-              Return:1). Transform back original value
-              Usage Example:
+* Function 16.1 reverse_num(x,treatment)
+* Check out the [reverse_num](./ensemble_weight_RMSE.r#L47) implementation.
+1. Input: 1). x: the variable that's been or not been transformed
+          2). treatment: could be "log","sqrt","square","none"
+2. Return:1). Transform back original value
+3. Usage Example:
 
-                    `real_value<-reverse_num(real_value,target_treatment)`
+`real_value<-reverse_num(real_value,target_treatment)`
         
-      * Function 16.2  ensemble_weight_RMSE(model_list,df,test_index,target_col,target_treatment)
-      * Check out the [reverse_num](./ensemble_weight_RMSE.r#L7) implementation.
-              Input: 1). model_list: the list of ensemble model
-                     2). df: data frame that you use to make prediction
-                     3). test_index: the test index selected earlier
-                     4). target_col: that column that you want to make prediction for
-                     5). target_treatment: if target column has been transformed, what method it use
-              Return:1). weight_list: how each model should contribute to overall prediction
-              Usage Example:
+* Function 16.2  ensemble_weight_RMSE(model_list,df,test_index,target_col,target_treatment)
+* Check out the [reverse_num](./ensemble_weight_RMSE.r#L7) implementation.
+1. Input: 1). model_list: the list of ensemble model
+          2). df: data frame that you use to make prediction
+          3). test_index: the test index selected earlier
+          4). target_col: that column that you want to make prediction for
+          5). target_treatment: if target column has been transformed, what method it use
+2. Return:1). weight_list: how each model should contribute to overall prediction
+3. Usage Example:
 
-              `weight_list<-ensemble_weight_RMSE(mlr_list,df,test_index,"col_name","log")`
+`weight_list<-ensemble_weight_RMSE(mlr_list,df,test_index,"col_name","log")`
 
 ### Function 17. emsemble_result_with_weight(logistic_model_list,df,index,weight_list)
 Check out the [emsemble_result_with_weight](./emsemble_result_with_weight.r#L1) implementation.
