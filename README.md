@@ -39,7 +39,7 @@ This include how to use these function
 
 11. [backward_p_mlr](./backward_p_mlr.r#L1)
 
-12. [make_ensemble_predict](./make_ensemble_predict.r#L1) {reverse_num | make_ensemble_predict}
+12. [make_ensemble_predict](./make_ensemble_predict.r#L1) {[reverse_num](./make_ensemble_predict.r#L30) | [make_ensemble_predict](./make_ensemble_predict.r#L6)}
 
 13. [check_model_performance](./check_model_performance.r#L1)
 
@@ -50,14 +50,14 @@ This include how to use these function
 15. [ensemble_weight_F1](./ensemble_weight_F1.r#L1)
 
 16. [ensemble_weight_RMSE](./ensemble_weight_RMSE.r#L1)
-          {reverse_num | 
-          ensemble_weight_RMSE}          
+          {[reverse_num](./ensemble_weight_RMSE.r#L47) | 
+          [ensemble_weight_RMSE](./ensemble_weight_RMSE.r#L7)}          
 
-17. [emsemble_result_with_weight](./emsemble_result_with_weight.r#L1) {reverse_num | emsemble_result_with_weight}
+17. [emsemble_result_with_weight](./emsemble_result_with_weight.r#L1) {[emsemble_result_with_weight](./emsemble_result_with_weight.r#L7) | [reverse_num](./emsemble_result_with_weight.r#L33)}
 
 18. [create_stack_model_mlr](./create_stack_model_mlr.r#L1)
 
-19. [stack_test_mlr](./stack_test_mlr.r#L1) {reverse_num | stack_test_mlr}
+19. [stack_test_mlr](./stack_test_mlr.r#L1) {[stack_test_mlr](./stack_test_mlr.r#L11) | [reverse_num](./stack_test_mlr.r#L49)}
 
 ## Technologies Used
 - **R** 
