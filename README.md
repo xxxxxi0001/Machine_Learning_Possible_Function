@@ -9,12 +9,12 @@ This include how to use these function
 2.  [replace_zero_with_na](./replace_zero_with_na.r#L1)
 3.  [iqr_outlier](./iqr_outlier.r#L1)
 4.  [kNN_Imputation](./kNN_Imputation.r#L1)
-      {initialize_distance_find_best_k | 
-      initialize_not_na_index | 
-      initialize_test_k_index | 
-      find_best_k | 
-      kNN_Imputation |
-      automation_knn_imputation}
+      {[kNN_Imputation](./kNN_Imputation.r#L6) | 
+      [kNN_Imputation](./kNN_Imputation.r#L24) | 
+      [kNN_Imputation](./kNN_Imputation.r#L36) | 
+      [kNN_Imputation](./kNN_Imputation.r#L52) | 
+      [kNN_Imputation](./kNN_Imputation.r#L120) |
+      [kNN_Imputation](./kNN_Imputation.r#L150)}
 
 {Feature Engineering} 
 
