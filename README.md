@@ -7,7 +7,7 @@ This include how to use these function
 {Data Cleaning}
 1.  [check_na_zero](./check_na.r#L1)
 2.  [replace_zero_with_na](./replace_zero_with_na.r#L1)
-3.  IQR_outlier
+3.  [iqr_outlier](./iqr_outlier.r#L1)
 4.  automated kNN Imputation
       {initialize_distance_find_best_k | 
       initialize_not_na_index | 
@@ -90,6 +90,7 @@ Check out the [iqr_outlier](./iqr_outlier.r#L1) implementation.
 `df<-IQR_outlier(df,variables)`
 
 ### Function 4. kNN Imputation
+Check out the [kNN_Imputation](./kNN_Imputation.r#L1) implementation.
 1. Purpose: Replace NA value with kNN Imputation (work on data set if their features could relate to each other)
 2. Usage Example: 
 
