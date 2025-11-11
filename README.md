@@ -5,8 +5,8 @@ This include how to use these function
 
 ## Key Functions
 {Data Cleaning}
-1.  check_na_zero
-2.  replace_zero_with_na
+1.  [check_na_zero](./check_na.r#L1)
+2.  [replace_zero_with_na](./replace_zero_with_na.r#L1)
 3.  IQR_outlier
 4.  automated kNN Imputation
       {initialize_distance_find_best_k | 
@@ -78,6 +78,7 @@ Check out the [replace_zero_with_na](./replace_zero_with_na.r#L1) implementation
 `df<-replace_na_with_zero(df,ignore_cols=c("col1","col2"))`
 
 ### Function 3. IQR_outlier(df,variables)
+Check out the [IQR_outlier](./IQR_outlier.r#L1) implementation.
 1. Purpose: For not normally distributed feature, replace their outliers based on quartiles, act only on assigned features (variable)
 2. Input: 1). df: Data Frame with Outliers
           2). variables: Features in Data Frame that need outlier Treatment
