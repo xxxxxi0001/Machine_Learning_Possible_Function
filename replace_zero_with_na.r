@@ -1,7 +1,7 @@
 # Input: 1). df: data frame with zero value 
 #        2). ignore_cols: zero value that does not need to be changed into NA
 # Return:1). df: data frame with designated columns' zero value replaced into na
-replace_na_with_zero<-function(df,ignore_cols) {
+replace_zero_with_na<-function(df,ignore_cols) {
   
   # For only column that their zero value need to change into NA
   for (i in 1:ncol(df)) {
