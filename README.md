@@ -67,7 +67,7 @@ Check out the [check_na_zero](./check_na.r#L1) implementation.
 
 `check_na_zero(df)`
 
-### Function 2. replace_na_with_zero(df,ignore_cols)
+### Function 2. replace_zero_with_na (df,ignore_cols)
 Check out the [replace_zero_with_na](./replace_zero_with_na.r#L1) implementation.
 1. Purpose: Change zero values that considered as missing value into NA for later imputation
 2. Input: 1). data frame with zero value 
